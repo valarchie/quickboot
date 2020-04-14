@@ -1,8 +1,15 @@
 package com.valarchie.quickboot.controller;
 
+import com.valarchie.quickboot.dao.UserMapper;
+import com.valarchie.quickboot.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by
@@ -13,10 +20,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
+    @Autowired
+    private UserMapper userMapper;
+
     @RequestMapping("/hello")
     @ResponseBody
-    public String hello() {
-        return "hello";
+    public Map hello() {
+
+        List<User> users = userMapper.selectList(null);
+
+        System.out.println(users);
+
+        Map responseMap = new HashMap();
+
+        responseMap.put("user", users);
+
+        return responseMap;
+
     }
 
 }
