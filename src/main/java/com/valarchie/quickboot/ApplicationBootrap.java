@@ -3,6 +3,7 @@ package com.valarchie.quickboot;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
  * Created by
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * mailbox:343928303@qq.com
  **/
 @SpringBootApplication
+@ServletComponentScan
 @MapperScan("com.valarchie.quickboot.dao")
 public class ApplicationBootrap {
 
