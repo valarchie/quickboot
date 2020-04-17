@@ -1,12 +1,8 @@
 package com.valarchie.quickboot.common.filter;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletRequestWrapper;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-import javax.xml.ws.RequestWrapper;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by
@@ -45,14 +41,50 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
         return values[0];
     }
 
+
+    @Override
+    public Enumeration getParameterNames() {
+
+        List<String> parameterNames = new ArrayList<>(params.keySet());
+
+        return new Enumeration() {
+
+            int count = 0;
+
+            public boolean hasMoreElements() {
+                return count < params.size();
+            }
+
+            public String nextElement() {
+                synchronized (params) {
+                    if (count < params.size()) {
+                        return parameterNames.get(count++);
+                    }
+                }
+                throw new NoSuchElementException("Vector Enumeration");
+            }
+        };
+
+
+    }
+
+
+
+
     @Override
     public String[] getParameterValues(String name) {//同上
+
+
+        System.out.println("调用"+name);
         return params.get(name);
     }
 
 
     @Override
     public Map<String, String[]> getParameterMap() {
+
+
+        System.out.println(params);
         return params;
     }
 
