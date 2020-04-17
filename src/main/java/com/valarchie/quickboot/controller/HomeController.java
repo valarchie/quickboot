@@ -6,6 +6,7 @@ import com.valarchie.quickboot.view.vo.UserParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public class HomeController {
 
     @RequestMapping("/good")
     @ResponseBody
-    public Map hello(UserParam param) {
+    public Map hello(@RequestParam UserParam param) {
 
         System.out.println(param);
 
