@@ -15,12 +15,15 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
 
     private Map<String , String[]> params = new HashMap<String, String[]>();
 
+    private String path;
 
-    public DecryptRequestWrapper(HttpServletRequest request, Map<String, String[]> overrideParameterMap) {
+
+    public DecryptRequestWrapper(HttpServletRequest request, Map<String, String[]> overrideParameterMap,String path) {
         // 将request交给父类，以便于调用对应方法的时候，将其输出，其实父亲类的实现方式和第一种new的方式类似
         super(request);
         //将参数表，赋予给当前的Map以便于持有request中的参数
         this.params.putAll(overrideParameterMap);
+        this.path = path;
     }
 
 
@@ -50,26 +53,40 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
         return new Enumeration() {
 
             int count = 0;
-
+            @Override
             public boolean hasMoreElements() {
                 return count < params.size();
             }
-
+            @Override
             public String nextElement() {
                 synchronized (params) {
                     if (count < params.size()) {
                         return parameterNames.get(count++);
                     }
                 }
-                throw new NoSuchElementException("Vector Enumeration");
+                throw new NoSuchElementException("No more elements in enumeration!");
             }
+
         };
 
 
     }
 
 
+    @Override
+    public String getRequestURI() {
 
+//        System.out.println(this.path);
+
+        return this.path;
+    }
+
+    @Override
+    public String getServletPath() {
+
+//        System.out.println(super.getServletPath());
+        return "/"+this.path;
+    }
 
     @Override
     public String[] getParameterValues(String name) {//同上

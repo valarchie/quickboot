@@ -24,9 +24,10 @@ public class HomeController {
 
     @RequestMapping("/good")
     @ResponseBody
-    public Map hello(@RequestParam UserParam param) {
+    public Map hello(UserParam param) {
 
         System.out.println(param);
+        System.out.println("进行home good方法！");
 
 //        List<User> users = userMapper.selectList(null);
 
