@@ -3,6 +3,10 @@ package com.valarchie.quickboot.controller;
 
 import com.valarchie.quickboot.dao.UserMapper;
 import com.valarchie.quickboot.view.vo.UserParam;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +21,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/home")
+@Slf4j
 public class HomeController {
 
     @Autowired
@@ -24,9 +29,12 @@ public class HomeController {
 
     @RequestMapping("/good")
     @ResponseBody
-    public Map hello(@RequestParam UserParam param) {
+    public Map hello(UserParam param) {
 
         System.out.println(param);
+        System.out.println("进行home good方法！");
+
+        log.info("functionName ：{}，parameterNames：{}", "good", param.toString());
 
 //        List<User> users = userMapper.selectList(null);
 

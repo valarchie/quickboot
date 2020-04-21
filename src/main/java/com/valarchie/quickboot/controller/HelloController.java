@@ -34,6 +34,8 @@ public class HelloController {
 
         Map responseMap = new HashMap();
 
+        System.out.println("进入hello方法！");
+
 //        responseMap.put("user", users);
 
 //        IUserAccountService userAccountService = new UserAccountServiceImpl();
