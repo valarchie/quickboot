@@ -17,4 +17,8 @@ public class UserParam {
     private String age;
     private String address;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

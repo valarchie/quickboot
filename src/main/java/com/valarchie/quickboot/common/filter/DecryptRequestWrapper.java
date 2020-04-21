@@ -100,7 +100,6 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
     @Override
     public Map<String, String[]> getParameterMap() {
 
-
         System.out.println(params);
         return params;
     }
