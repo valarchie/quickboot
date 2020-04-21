@@ -5,17 +5,23 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.*;
 
 /**
- * Created by
- * author:valarchie
- * on 2020/4/16 23:26
- * mailbox:343928303@qq.com
- **/
+* Created by
+* @author: valarchie
+* on: 2020/4/18
+* @email: 343928303@qq.com
+*/
 public class DecryptRequestWrapper extends HttpServletRequestWrapper {
 
+    /**
+     *
+     */
+    private Map<String , String[]> params = new HashMap<>();
 
-    private Map<String , String[]> params = new HashMap<String, String[]>();
-
-
+    /**
+     *
+     * @param request
+     * @param overrideParameterMap
+     */
     public DecryptRequestWrapper(HttpServletRequest request, Map<String, String[]> overrideParameterMap) {
         // 将request交给父类，以便于调用对应方法的时候，将其输出，其实父亲类的实现方式和第一种new的方式类似
         super(request);
@@ -50,11 +56,12 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
         return new Enumeration() {
 
             int count = 0;
-
+            @Override
             public boolean hasMoreElements() {
                 return count < params.size();
             }
 
+            @Override
             public String nextElement() {
                 synchronized (params) {
                     if (count < params.size()) {
