@@ -2,7 +2,6 @@ package com.valarchie.quickboot.common.filter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-import java.io.File;
 import java.util.*;
 
 /**
@@ -20,11 +19,12 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
 
 
     public DecryptRequestWrapper(HttpServletRequest request, Map<String, String[]> overrideParameterMap, String path) {
-        // 将request交给父类，以便于调用对应方法的时候，将其输出，其实父亲类的实现方式和第一种new的方式类似
+
         super(request);
-        //将参数表，赋予给当前的Map以便于持有request中的参数
+        // 将重写后的参数Map放至params参数中
         this.params.putAll(overrideParameterMap);
         this.path = path;
+
     }
 
 

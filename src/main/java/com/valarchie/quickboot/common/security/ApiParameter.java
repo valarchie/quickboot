@@ -10,13 +10,18 @@ import com.alibaba.fastjson.JSON;
 import lombok.Data;
 
 /**
-* Created by
-* @author: valarchie
-* on: 2020/4/21
-* @email: 343928303@qq.com
-*/
+ * Created by
+ *
+ * @author: valarchie
+ * on: 2020/4/21
+ * @email: 343928303@qq.com
+ */
 @Data
 public class ApiParameter {
+
+    public final static String MODULE_KEY = "module";
+    public final static String FUNCTION_KEY = "function";
+    public final static String PARAMETERS_KEY = "parameters";
 
     private String module;
 
@@ -55,6 +60,30 @@ public class ApiParameter {
             }
 
         }
+
+    }
+
+
+    /**
+     * 由ApiRequest对象生成的参数map直接填入，不用解密，所以传入空操作的IApiDecrypter不做解密处理
+     *
+     * @param map
+     */
+    public ApiParameter(Map<String, String> map) {
+
+        this(map.get(ApiParameter.MODULE_KEY), map.get(ApiParameter.FUNCTION_KEY), map.get(ApiParameter.PARAMETERS_KEY), parameter -> parameter);
+
+    }
+
+
+    /**
+     * 获取自定义的请求路径
+     *
+     * @return
+     */
+    public String getDecryptRequestPath() {
+
+        return "/" + this.module + "/" + this.function;
 
     }
 
