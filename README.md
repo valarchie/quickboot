@@ -15,6 +15,7 @@
 - [ ] 配置log插件，并做好优化
 - [ ] 统一结果、统一异常、统一日志
 - [ ] 上传文件的优化，OSS
+- [ ] 统一参数校验
  
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines
