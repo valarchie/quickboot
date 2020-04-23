@@ -20,6 +20,7 @@
 - [ ] 返回结果加密
 - [ ] 配置全局跨域
 - [ ] 跨域问题
+- [ ] session问题
  
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines
