@@ -21,6 +21,7 @@
 - [ ] 配置全局跨域
 - [ ] 跨域问题
 - [ ] session问题
+- [ ] swagger+yapi
  
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines
