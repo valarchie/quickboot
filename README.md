@@ -22,6 +22,7 @@
 - [ ] 跨域问题
 - [ ] session问题
 - [ ] swagger+yapi
+- [ ] ServiceUtil全局访问点
  
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines
