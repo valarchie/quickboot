@@ -4,6 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Created by
@@ -14,6 +15,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @SpringBootApplication
 @ServletComponentScan
 @MapperScan("com.valarchie.quickboot.dao")
+@ComponentScan("com.valarchie")
 public class ApplicationBootrap {
 
     public static void main(String[] args) {

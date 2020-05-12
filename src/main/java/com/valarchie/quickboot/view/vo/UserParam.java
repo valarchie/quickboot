@@ -2,6 +2,11 @@ package com.valarchie.quickboot.view.vo;
 
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by
@@ -13,8 +18,17 @@ import lombok.ToString;
 @ToString
 public class UserParam {
 
+    @NotNull
+    @NotBlank
     private String name;
-    private String age;
+
+    @NotNull
+    @Max(120)
+    private Short age;
+
+    @NotNull
+    @NotBlank
+    @Length(min = 3)
     private String address;
 
     public void setName(String name) {
