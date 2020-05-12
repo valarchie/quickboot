@@ -4,18 +4,14 @@ import cn.hutool.core.codec.Base64;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.symmetric.AES;
-import com.valarchie.quickboot.common.security.ApiParameter;
-import com.valarchie.quickboot.common.security.ApiRequest;
+import com.valarchie.quickboot.common.security.ApiValidateRequest;
 import com.valarchie.quickboot.common.security.IApiDecrypter;
 import com.valarchie.quickboot.common.security.SecurityDefine;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -26,9 +22,9 @@ import java.util.Map;
  * on: 2020/4/21
  * @email: 343928303@qq.com
  */
-@WebFilter(filterName = "ValidateDecryptFilter", urlPatterns = "/*")
+//@WebFilter(filterName = "ValidateDecryptFilter", urlPatterns = "/*")
 @Slf4j
-public class ValidateCheckDecryptFilter implements Filter {
+public class ApiValidateDecryptFilter implements Filter {
 
 
     @Override
@@ -41,11 +37,11 @@ public class ValidateCheckDecryptFilter implements Filter {
 
         log.debug("start decrypt request data : {}", requestParameterMap);
 
-        String[] timestamp = requestParameterMap.get(ApiRequest.TIMESTAMP_KEY);
+        String[] timestamp = requestParameterMap.get(ApiValidateRequest.TIMESTAMP_KEY);
 
-        String[] data = requestParameterMap.get(ApiRequest.DATA_KEY);
+        String[] data = requestParameterMap.get(ApiValidateRequest.DATA_KEY);
 
-        String[] sign = requestParameterMap.get(ApiRequest.SIGN_KEY);
+        String[] sign = requestParameterMap.get(ApiValidateRequest.SIGN_KEY);
 
         if (ArrayUtil.isEmpty(timestamp)) {
             log.error("request encrypt data not completed ! timestamp is empty !");
@@ -62,7 +58,7 @@ public class ValidateCheckDecryptFilter implements Filter {
             throw new RuntimeException("sign参数为空！");
         }
 
-        ApiRequest apiRequest = new ApiRequest(timestamp[0], data[0], sign[0], new IApiDecrypter() {
+        ApiValidateRequest apiRequest = new ApiValidateRequest(timestamp[0], data[0], sign[0], new IApiDecrypter() {
             @Override
             public String decryptParameter(String parameter) {
                 // 将前台传回的加密参数先用base64解成字节数组

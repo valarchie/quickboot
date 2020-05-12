@@ -25,7 +25,7 @@ import org.springframework.util.DigestUtils;
 */
 @Data
 @Slf4j
-public class ApiRequest {
+public class ApiValidateRequest {
 
     public final static String TIMESTAMP_KEY = "timestamp";
     public final static String DATA_KEY = "data";
@@ -37,7 +37,7 @@ public class ApiRequest {
 
     private String sign;
 
-    public ApiRequest(String timeStampStr, String data, String sign, IApiDecrypter decrypter) {
+    public ApiValidateRequest(String timeStampStr, String data, String sign, IApiDecrypter decrypter) {
 
         if (StrUtil.isBlank(timeStampStr) || StrUtil.isBlank(data) || StrUtil.isBlank(sign)) {
 
