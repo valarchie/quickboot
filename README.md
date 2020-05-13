@@ -20,6 +20,7 @@
 - [x] 返回结果加密
 - [ ] 配置全局跨域
 - [ ] 跨域问题
+- [ ] 多数据源配置
 - [ ] session问题
 - [ ] swagger+yapi
 - [ ] ServiceUtil全局访问点
