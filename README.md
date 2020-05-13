@@ -24,6 +24,7 @@
 - [ ] swagger+yapi
 - [ ] ServiceUtil全局访问点
 - [ ] 配置异步调用Service
+- [ ] 定时任务处理
  
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines
