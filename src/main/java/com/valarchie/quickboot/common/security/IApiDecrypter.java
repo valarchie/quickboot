@@ -7,8 +7,12 @@ package com.valarchie.quickboot.common.security;
  */
 public interface IApiDecrypter {
 
-
-
+    /**
+     * 解密加密串
+     * @param encryptStr 加密后的字符串
+     * @return
+     */
+    String decrypt(String encryptStr);
 
 
 }

@@ -16,4 +16,9 @@ public class ApiParameters {
 
     private Map parameters;
 
+    public ApiParameters(String module, String function, String parameters, IApiDecrypter decrypter) {
+
+
+    }
+
 }
