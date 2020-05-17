@@ -23,6 +23,7 @@
 - [ ] 配置异步调用Service
 - [ ] 邮件、OSS、支付
 - [ ] 授权,jwt，Oauth 2.0
+- [ ] 分布式id
 
 #### 数据层
 - [x] 集成Mybatis Plus
