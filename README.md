@@ -25,6 +25,7 @@
 - [ ] 授权,jwt，Oauth 2.0
 - [ ] 分布式id
 - [ ] ThreadLocal工具类
+- [ ] AOP配置操作日志
 
 #### 数据层
 - [x] 集成Mybatis Plus
