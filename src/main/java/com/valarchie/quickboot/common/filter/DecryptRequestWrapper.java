@@ -6,14 +6,14 @@ import java.util.*;
 
 /**
  * Created by
- * author:valarchie
+ * @author: valarchie
  * on 2020/4/16 23:26
  * mailbox:343928303@qq.com
  **/
 public class DecryptRequestWrapper extends HttpServletRequestWrapper {
 
 
-    private Map<String, String[]> params = new HashMap<String, String[]>();
+    private Map<String, String[]> params = new HashMap<>();
 
     private String path;
 
@@ -39,6 +39,7 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
     }
 
 
+    @SuppressWarnings(value = {"unchecked"})
     @Override
     public Enumeration getParameterNames() {
 
