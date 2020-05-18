@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 * on: 2020/4/22
 * @email: 343928303@qq.com
 */
-@ControllerAdvice(basePackages = "com.valarchie")
+//@ControllerAdvice(basePackages = "com.valarchie")
 @Slf4j
 public class EncryptResponseAdvice implements ResponseBodyAdvice {
 
@@ -33,13 +33,8 @@ public class EncryptResponseAdvice implements ResponseBodyAdvice {
         if (mediaType == MediaType.APPLICATION_JSON) {
 
             log.debug("start encrypt responsebody, origin data:{}", o);
-
-            IApiEncrypter encrypter = new IApiEncrypter() {
-                @Override
-                public String encryptData(Object o) {
-                    return Base64.encode(JSON.toJSONString(o));
-                }
-            };
+            // 定义加密器
+            IApiEncrypter encrypter = data -> Base64.encode(JSON.toJSONString(data));
 
             String encode = encrypter.encryptData(o);
 
