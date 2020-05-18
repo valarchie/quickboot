@@ -8,6 +8,11 @@ package com.valarchie.quickboot.common.security;
 */
 public interface IApiEncrypter {
 
+    /**
+     * 自定义加密器
+     * @param o
+     * @return
+     */
     String encryptData(Object o);
 
 }

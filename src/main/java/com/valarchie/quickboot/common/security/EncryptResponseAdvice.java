@@ -32,7 +32,7 @@ public class EncryptResponseAdvice implements ResponseBodyAdvice {
 
         if (mediaType == MediaType.APPLICATION_JSON) {
 
-            log.debug("start encrypt responsebody, origin data:{}", o);
+            log.debug("start encrypt response body, origin data:{}", o);
             // 定义加密器
             IApiEncrypter encrypter = data -> Base64.encode(JSON.toJSONString(data));
 
@@ -42,7 +42,7 @@ public class EncryptResponseAdvice implements ResponseBodyAdvice {
 
         } else {
 
-            log.debug("responsebody without encrypt, origin data:{}", o);
+            log.debug("response body without encrypt");
 
             return o;
         }
