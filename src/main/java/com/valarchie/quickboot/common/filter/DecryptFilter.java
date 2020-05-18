@@ -19,7 +19,7 @@ import java.util.Map;
  * on: 2020/4/21
  * @email: 343928303@qq.com
  */
-@WebFilter(filterName = "DecryptFilter", urlPatterns = "/*")
+//@WebFilter(filterName = "DecryptFilter", urlPatterns = "/*")
 @Slf4j
 public class DecryptFilter implements Filter {
 

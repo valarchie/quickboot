@@ -1,21 +1,20 @@
 package com.valarchie.quickboot.common.filter;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
+
 /**
-* description: 异常过滤器
-* @author: valarchie
-* on: 2020/5/18
-* @email: 343928303@qq.com
-*/
+ * description: 异常过滤器
+ * @author: valarchie
+ * on: 2020/5/18
+ * @email: 343928303@qq.com
+ */
 @Slf4j
-@WebFilter(filterName = "AExceptionFilter", urlPatterns = "/*")
-public class AExceptionFilter implements Filter {
+//@WebFilter(filterName = "ExceptionFilter", urlPatterns = "/*")
+public class ExceptionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

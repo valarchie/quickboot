@@ -8,7 +8,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
+import javax.xml.ws.Response;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -89,6 +91,15 @@ public class ControllerExceptionHandler {
 
         return ResponseResult.error(ResultCodeEnum.API_ERROR);
 
+    }
+
+    @ResponseBody
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseResult handleResourceNotFoundException(NoHandlerFoundException nhre) {
+
+
+        nhre.printStackTrace();
+        return ResponseResult.error(ResultCodeEnum.API_ERROR);
     }
 
 
