@@ -5,12 +5,13 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.*;
 
 /**
+ * 重写HttpRequest，使得可以解密并改写参数
  * Created by
  * @author: valarchie
  * on 2020/4/16 23:26
  * mailbox:343928303@qq.com
  **/
-public class DecryptRequestWrapper extends HttpServletRequestWrapper {
+public class RequestParamsWrapper extends HttpServletRequestWrapper {
 
 
     private Map<String, String[]> params = new HashMap<>();
@@ -18,7 +19,7 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
     private String path;
 
 
-    public DecryptRequestWrapper(HttpServletRequest request, Map<String, String[]> overrideParameterMap, String path) {
+    public RequestParamsWrapper(HttpServletRequest request, Map<String, String[]> overrideParameterMap, String path) {
 
         super(request);
         // 将重写后的参数Map放至params参数中

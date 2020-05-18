@@ -1,21 +1,16 @@
 package com.valarchie.quickboot.common.security;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
-import cn.hutool.crypto.asymmetric.Sign;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
-import com.mysql.cj.util.StringUtils;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.DigestUtils;
 
 /**
 * description: api请求数据封装类
@@ -25,7 +20,7 @@ import org.springframework.util.DigestUtils;
 */
 @Data
 @Slf4j
-public class ApiValidateRequest {
+public class ApiDecryptRequest {
 
     public final static String TIMESTAMP_KEY = "timestamp";
     public final static String DATA_KEY = "data";
@@ -33,11 +28,11 @@ public class ApiValidateRequest {
 
     private Long timeStamp;
 
-    private ApiParameter data;
+    private SimpleDecryptRequest data;
 
     private String sign;
 
-    public ApiValidateRequest(String timeStampStr, String data, String sign, IApiDecrypter decrypter) {
+    public ApiDecryptRequest(String timeStampStr, String data, String sign, IApiDecrypter decrypter) {
 
         if (StrUtil.isBlank(timeStampStr) || StrUtil.isBlank(data) || StrUtil.isBlank(sign)) {
 
@@ -67,10 +62,6 @@ public class ApiValidateRequest {
 
         log.info("timestamp:{}, data:{}, sign:{}", timeStampStr, decryptDataJsonStr, sign);
 
-//        System.out.println(timeStampStr);
-//        System.out.println(decryptDataJsonStr);
-//        System.out.println(signed);
-
         if (!Objects.equals(this.sign, signed)) {
             throw new RuntimeException("api request sign is invalid!");
         }
@@ -81,7 +72,7 @@ public class ApiValidateRequest {
 
         Map<String, String> map = JSON.parseObject(decryptDataJsonStr, Map.class);
 
-        ApiParameter apiParameter = new ApiParameter(map);
+        SimpleDecryptRequest apiParameter = new SimpleDecryptRequest(map);
 
         this.data = apiParameter;
 

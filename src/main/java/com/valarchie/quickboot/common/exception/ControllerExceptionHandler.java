@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import javax.xml.ws.Response;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -46,7 +45,6 @@ public class ControllerExceptionHandler {
 
         }
 
-
         // 抽取参数绑定错误
         List<FieldError> fieldErrors = e.getFieldErrors();
         // 简单的错误提示
@@ -76,7 +74,6 @@ public class ControllerExceptionHandler {
 
             simpleErrors.add(simpleError);
         }
-
 
         return ResponseResult.error(ResultCodeEnum.API_ERROR, simpleErrors.toString());
 

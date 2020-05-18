@@ -1,44 +1,40 @@
 package com.valarchie.quickboot.controller;
 
+import com.valarchie.quickboot.common.api.ResponseResult;
 import com.valarchie.quickboot.dao.UserMapper;
+import com.valarchie.quickboot.service.HelloService;
+import com.valarchie.quickboot.view.vo.HelloParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by
- * author:valarchie
+ * @author: valarchie
  * on 2020/2/26 9:53
  * mailbox:343928303@qq.com
  **/
 @Controller
+@RequestMapping("/hello")
 public class HelloController {
 
     @Autowired
-    private UserMapper userMapper;
+    private HelloService helloService;
 
-    @RequestMapping("/hello")
+    @RequestMapping("/world")
     @ResponseBody
-    public Map hello() {
+    public ResponseResult hello(HelloParam param) {
 
-//        List<User> users = userMapper.selectList(null);
+        String msg = "hello, " + param.getName();
 
-//        System.out.println(users);
+        helloService.hello();
 
-        Map responseMap = new HashMap();
-
-        System.out.println("进入hello方法！");
-
-//        responseMap.put("user", users);
-
-//        IUserAccountService userAccountService = new UserAccountServiceImpl();
-//
-//        int count = userAccountService.count(new QueryWrapper<UserAccount>().select());
-
-        return responseMap;
+        return ResponseResult.success().data("msg", msg);
 
     }
 

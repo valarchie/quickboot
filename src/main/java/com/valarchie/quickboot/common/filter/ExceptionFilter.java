@@ -19,10 +19,11 @@ public class ExceptionFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        System.out.println("sssssssssssssssssssssssssssssssssss");
         try {
             chain.doFilter(request, response);
         } catch (Exception e) {
+
+            e.printStackTrace();
             // 异常捕获，发送到error controller
             request.setAttribute("filter.error", e);
             //将异常分发到/error/exthrow控制器
@@ -32,7 +33,8 @@ public class ExceptionFilter implements Filter {
     }
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
+
     }
 
     @Override
