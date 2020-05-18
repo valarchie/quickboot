@@ -1,6 +1,8 @@
 package com.valarchie.quickboot.controller;
 
 
+import com.valarchie.quickboot.common.api.ResponseResult;
+import com.valarchie.quickboot.common.api.ResultCodeEnum;
 import com.valarchie.quickboot.dao.UserMapper;
 import com.valarchie.quickboot.view.vo.UserParam;
 import lombok.extern.java.Log;
@@ -28,7 +30,7 @@ public class HomeController {
 
     @RequestMapping("/good")
     @ResponseBody
-    public Map hello(UserParam param) {
+    public ResponseResult hello(@Valid UserParam param) {
 
         log.info("functionName ：{}，parameterNames：{}", "good", param.toString());
 
@@ -46,8 +48,35 @@ public class HomeController {
 //
 //        int count = userAccountService.count(new QueryWrapper<UserAccount>().select());
 
-        return responseMap;
+        return ResponseResult.success().data("msg","hahahah");
 
     }
+
+    @RequestMapping("/apierror")
+    @ResponseBody
+    public ResponseResult apierror(@Valid UserParam param) {
+
+        log.info("functionName ：{}，parameterNames：{}", "good", param.toString());
+
+        if (1 == 1) {
+            throw new RuntimeException("报错了！");
+
+        }
+
+
+        return ResponseResult.error(ResultCodeEnum.API_ERROR);
+
+    }
+
+    @RequestMapping("/apierror2")
+    @ResponseBody
+    public ResponseResult apierror2(@Valid UserParam param) {
+
+        log.info("functionName ：{}，parameterNames：{}", "good", param.toString());
+
+        return ResponseResult.success().data("ss","ss").data("ss1","sssss");
+
+    }
+
 
 }
