@@ -35,14 +35,12 @@ public class ApiRequestTest {
 
         JSONObject data = new JSONObject();
 
-        data.put("module", "home");
-        data.put("function", "good");
+        data.put("module", "hello");
+        data.put("function", "world");
 
         JSONObject parameters = new JSONObject();
 
-        parameters.put("name", "tom");
-        parameters.put("age", 11);
-        parameters.put("address", "beijing");
+        parameters.put("name", "valarchie");
 
         data.put("parameters", parameters.toJSONString());
 

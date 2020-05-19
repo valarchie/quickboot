@@ -1,9 +1,13 @@
 package com.valarchie.quickboot.common.config;
 
+import com.valarchie.quickboot.common.exception.ExceptionFilter;
 import com.valarchie.quickboot.common.filter.ApiDecryptFilter;
-import com.valarchie.quickboot.common.filter.ExceptionFilter;
 import com.valarchie.quickboot.common.filter.SimpleDecryptFilter;
+import com.valarchie.quickboot.service.AsynService;
+import com.valarchie.quickboot.service.CaffeineService;
 import com.valarchie.quickboot.service.HelloService;
+import com.valarchie.quickboot.service.impl.AsynServiceImpl;
+import com.valarchie.quickboot.service.impl.CaffeineServiceImpl;
 import com.valarchie.quickboot.service.impl.HelloServiceImpl;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -31,14 +35,14 @@ public class ApplicationConfig {
         //配置过滤规则
         registration.addUrlPatterns("/*");
         //设置过滤器名称
-        registration.setName("validateDecryptFilter");
+        registration.setName("apiDecryptFilter");
         //执行次序
         registration.setOrder(2);
 
         return registration;
     }
 
-    @Bean
+//    @Bean
     public FilterRegistrationBean simpleDecryptFilterRegistration() {
 
         FilterRegistrationBean registration = new FilterRegistrationBean();
@@ -81,6 +85,15 @@ public class ApplicationConfig {
         return new HelloServiceImpl();
     }
 
+    @Bean
+    public AsynService asynService() {
+        return new AsynServiceImpl();
+    }
+
+    @Bean
+    public CaffeineService caffeinService() {
+        return new CaffeineServiceImpl();
+    }
 
 
 }

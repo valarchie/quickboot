@@ -12,21 +12,24 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
-* description: 控制器层日志打印
-* @author: valarchie
-* on: 2020/5/18
-* @email: 343928303@qq.com
-*/
+ * description: 控制器层日志打印
+ *
+ * @author: valarchie
+ * on: 2020/5/18
+ * @email: 343928303@qq.com
+ */
 @Aspect
 @Component
 @Slf4j
 public class ControllerLogAspect {
 
     @Pointcut("execution(public * com.valarchie.quickboot.controller.*.*(..))")
-    public void webLog(){}
+    public void webLog() {
+    }
 
     /**
      * 前置通知
+     *
      * @param joinPoint
      */
     @Before("webLog()")
@@ -37,8 +40,10 @@ public class ControllerLogAspect {
         HttpServletRequest request = attributes.getRequest();
 
         // 记录详细请求内容
-        log.info("request url:{}, method:{}, ip:{}, controller:{}, function:{}, parameters:{}",
-                request.getRequestURL().toString(), request.getMethod(), request.getRemoteAddr(),
+        log.info("request url:{}, method:{}, ip:{}",
+                request.getRequestURL().toString(), request.getMethod(), request.getRemoteAddr());
+
+        log.info("controller:{}, function:{}, parameters:{}",
                 joinPoint.getSignature().getDeclaringType().getSimpleName(),
                 joinPoint.getSignature().getName(), JSON.toJSON(joinPoint.getArgs()));
 
@@ -47,6 +52,7 @@ public class ControllerLogAspect {
 
     /**
      * 返回通知
+     *
      * @param ret
      */
     @AfterReturning(returning = "ret", pointcut = "webLog()")
@@ -57,22 +63,27 @@ public class ControllerLogAspect {
 
     /**
      * 后置异常通知
+     *
      * @param jp
      */
     @AfterThrowing("webLog()")
-    public void throwss(JoinPoint jp){}
+    public void throwss(JoinPoint jp) {
+    }
 
 
     /**
      * 后置最终通知,final增强，不管是抛出异常或者正常退出都会执行
+     *
      * @param jp
      */
     @After("webLog()")
-    public void after(JoinPoint jp){}
+    public void after(JoinPoint jp) {
+    }
 
 
     /**
      * 环绕通知
+     *
      * @param pjp
      * @return
      */
@@ -80,7 +91,7 @@ public class ControllerLogAspect {
     public Object around(ProceedingJoinPoint pjp) {
         try {
             // log
-            Object o =  pjp.proceed();
+            Object o = pjp.proceed();
             // log
             return o;
         } catch (Throwable e) {

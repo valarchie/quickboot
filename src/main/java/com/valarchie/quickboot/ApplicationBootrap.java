@@ -4,7 +4,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * Created by
@@ -16,6 +18,8 @@ import org.springframework.context.annotation.ComponentScan;
 @ServletComponentScan
 @MapperScan("com.valarchie.quickboot.dao")
 @ComponentScan("com.valarchie")
+@EnableAsync
+@EnableCaching
 public class ApplicationBootrap {
 
     public static void main(String[] args) {
