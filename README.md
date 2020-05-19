@@ -23,7 +23,7 @@
 - [ ] 邮件、OSS、支付
 - [ ] 授权，jwt，Oauth 2.0
 - [x] ThreadLocal工具类
-- [ ] EhCache缓存
+- [x] Caffeine缓存
 - [x] AOP配置Controller层，Service层统一日志
 
 #### 数据层
@@ -32,7 +32,7 @@
 - [ ] Mybatis Plus模板方法
 - [ ] 多数据源配置，主从配置
 - [ ] 连接池配置
-
+- [ ] mongo，redis配置优化
 
 
 
@@ -41,8 +41,7 @@
 - [ ] 配置log插件，logback配置，并做好优化
 - [ ] 配置文件参数加密
 - [ ] swagger+yapi
-- [ ] 定时任务处理
-- [ ] mongo，redis配置优化
+- [x] 定时任务处理
 - [ ] 配置优化tomcat
 - [ ] 优雅配置yml，配置映射pojo
 
