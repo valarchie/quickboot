@@ -29,11 +29,9 @@
 #### 数据层
 
 - [x] 集成Mybatis Plus
-- [ ] 集成Mybatis Plus Generator快速开发框架，并做好相关配置
-- [ ] Mybatis模板方法
-- [ ] 多数据源配置
-- [ ] 多数据源，主从配置
-- [ ] mapper刷新
+- [ ] Mybatis Plus模板方法
+- [ ] 多数据源配置，主从配置
+
 
 
 #### 配置层
