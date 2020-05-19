@@ -18,10 +18,10 @@
 #### 业务层
 
 
-- [ ] ServiceUtil全局访问点
-- [ ] 配置异步调用Service
+- [x] ServiceUtil全局访问点
+- [x] 配置异步调用Service
 - [ ] 邮件、OSS、支付
-- [ ] 授权,jwt，Oauth 2.0
+- [ ] 授权，jwt，Oauth 2.0
 - [ ] 分布式id
 - [ ] ThreadLocal工具类
 - [x] AOP配置Controller层，Service层统一日志
