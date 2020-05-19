@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * Created by
@@ -20,6 +21,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @ComponentScan("com.valarchie")
 @EnableAsync
 @EnableCaching
+@EnableScheduling
 public class ApplicationBootrap {
 
     public static void main(String[] args) {
