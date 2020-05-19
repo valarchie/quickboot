@@ -81,8 +81,8 @@ public class ControllerExceptionHandler {
 
 
     @ResponseBody
-    @ExceptionHandler(value = Exception.class)
-    public ResponseResult runtimeException(Exception e) {
+    @ExceptionHandler(value = RuntimeException.class)
+    public ResponseResult runtimeException(RuntimeException e) {
 
         e.printStackTrace();
 
