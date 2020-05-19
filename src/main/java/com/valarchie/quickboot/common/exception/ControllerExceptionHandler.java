@@ -8,6 +8,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.lang.reflect.Field;
@@ -21,6 +22,11 @@ import java.util.*;
  */
 @ControllerAdvice
 public class ControllerExceptionHandler {
+
+
+
+
+
 
     @ResponseBody
     @ExceptionHandler(BindException.class)
@@ -80,25 +86,49 @@ public class ControllerExceptionHandler {
     }
 
 
+
+
+
+
+    @ResponseBody
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseResult handleResourceNotFoundException(NoHandlerFoundException nhre) {
+
+        nhre.printStackTrace();
+        return ResponseResult.error(ResultCodeEnum.API_ERROR);
+
+    }
+
+
+
+    @ResponseBody
+    @ExceptionHandler(value = Exception.class)
+    public ResponseResult exception(Exception e) {
+
+        e.printStackTrace();
+
+        return ResponseResult.error(ResultCodeEnum.API_ERROR, e.getMessage());
+
+    }
+
     @ResponseBody
     @ExceptionHandler(value = RuntimeException.class)
     public ResponseResult runtimeException(RuntimeException e) {
 
         e.printStackTrace();
 
-        return ResponseResult.error(ResultCodeEnum.API_ERROR);
+        return ResponseResult.error(ResultCodeEnum.API_ERROR, e.getMessage());
 
     }
 
     @ResponseBody
-    @ExceptionHandler(NoHandlerFoundException.class)
-    public ResponseResult handleResourceNotFoundException(NoHandlerFoundException nhre) {
+    @ExceptionHandler(value = NullPointerException.class)
+    public ResponseResult nullPointerException(NullPointerException e) {
 
+        e.printStackTrace();
 
-        nhre.printStackTrace();
-        return ResponseResult.error(ResultCodeEnum.API_ERROR);
+        return ResponseResult.error(ResultCodeEnum.API_ERROR, e.getMessage());
+
     }
-
-
 
 }

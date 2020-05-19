@@ -40,9 +40,10 @@ public class HelloController {
 
 
         String msg = "hello, " + param.getName();
-
-//        asynService.asynMethod("lily");
-//        helloService.hello();
+        // 测试异步
+        asynService.asynMethod("lily");
+        helloService.hello();
+        // 测试使用全局Service访问点
         ServiceUtil.helloService().hello();
 
         return ResponseResult.success().data("msg", msg);

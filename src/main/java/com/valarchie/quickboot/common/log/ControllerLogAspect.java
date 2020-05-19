@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -43,9 +44,18 @@ public class ControllerLogAspect {
         log.info("request url:{}, method:{}, ip:{}",
                 request.getRequestURL().toString(), request.getMethod(), request.getRemoteAddr());
 
+        // 如果是二进制流的话 不打印
+        boolean isFile = false;
+
+        for (Object arg : joinPoint.getArgs()) {
+            if (arg instanceof MultipartFile) {
+                isFile = true;
+            }
+        }
+
         log.info("controller:{}, function:{}, parameters:{}",
                 joinPoint.getSignature().getDeclaringType().getSimpleName(),
-                joinPoint.getSignature().getName(), JSON.toJSON(joinPoint.getArgs()));
+                joinPoint.getSignature().getName(), isFile ? "file" : JSON.toJSON(joinPoint.getArgs()));
 
 
     }
@@ -87,17 +97,17 @@ public class ControllerLogAspect {
      * @param pjp
      * @return
      */
-    @Around("webLog()")
-    public Object around(ProceedingJoinPoint pjp) {
-        try {
-            // log
-            Object o = pjp.proceed();
-            // log
-            return o;
-        } catch (Throwable e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    @Around("webLog()")
+//    public Object around(ProceedingJoinPoint pjp) {
+//        try {
+//            // log
+//            Object o = pjp.proceed();
+//            // log
+//            return o;
+//        } catch (Throwable e) {
+//            e.printStackTrace();
+//            return e;
+//        }
+//    }
 
 }
