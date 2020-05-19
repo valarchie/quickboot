@@ -22,7 +22,6 @@
 - [x] 配置异步调用Service
 - [ ] 邮件、OSS、支付
 - [ ] 授权，jwt，Oauth 2.0
-- [ ] 分布式id
 - [x] ThreadLocal工具类
 - [ ] EhCache缓存
 - [x] AOP配置Controller层，Service层统一日志
