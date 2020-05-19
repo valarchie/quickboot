@@ -31,6 +31,8 @@
 - [x] 集成Mybatis Plus
 - [ ] Mybatis Plus模板方法
 - [ ] 多数据源配置，主从配置
+- [ ] 连接池配置
+
 
 
 
