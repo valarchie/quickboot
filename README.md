@@ -23,7 +23,7 @@
 - [ ] 邮件、OSS、支付
 - [ ] 授权，jwt，Oauth 2.0
 - [ ] 分布式id
-- [ ] ThreadLocal工具类
+- [x] ThreadLocal工具类
 - [ ] EhCache缓存
 - [x] AOP配置Controller层，Service层统一日志
 
