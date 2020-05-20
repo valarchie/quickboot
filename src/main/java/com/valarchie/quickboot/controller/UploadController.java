@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
 * description: 上传控制器
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 * on: 2020/5/19
 * @email: 343928303@qq.com
 */
+@ApiIgnore
 @Controller
 @RequestMapping("/upload")
 public class UploadController {

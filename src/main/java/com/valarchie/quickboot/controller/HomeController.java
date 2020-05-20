@@ -12,14 +12,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- */
+* description: 测试控制器
+* @author: valarchie
+* on: 2020/5/20
+* @email: 343928303@qq.com
+*/
+@ApiIgnore
 @Controller
 @RequestMapping("/home")
 @Slf4j

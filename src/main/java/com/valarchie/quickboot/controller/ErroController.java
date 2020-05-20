@@ -2,12 +2,10 @@ package com.valarchie.quickboot.controller;
 
 import com.valarchie.quickboot.common.api.ResponseResult;
 import com.valarchie.quickboot.common.api.ResultCodeEnum;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * description: 错误页面控制器
@@ -16,9 +14,9 @@ import javax.servlet.http.HttpServletRequest;
  * on: 2020/5/18
  * @email: 343928303@qq.com
  */
+@ApiIgnore
 @Controller
 public class ErroController {
-
 
     @RequestMapping("/error/throw")
     @ResponseBody
