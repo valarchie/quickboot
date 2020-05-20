@@ -13,32 +13,26 @@ import java.util.*;
 public class DecryptRequestWrapper extends HttpServletRequestWrapper {
 
 
-    private Map<String , String[]> params = new HashMap<String, String[]>();
+    private Map<String, String[]> params = new HashMap<String, String[]>();
 
     private String path;
 
 
-    public DecryptRequestWrapper(HttpServletRequest request, Map<String, String[]> overrideParameterMap,String path) {
-        // 将request交给父类，以便于调用对应方法的时候，将其输出，其实父亲类的实现方式和第一种new的方式类似
+    public DecryptRequestWrapper(HttpServletRequest request, Map<String, String[]> overrideParameterMap, String path) {
+
         super(request);
-        //将参数表，赋予给当前的Map以便于持有request中的参数
+        // 将重写后的参数Map放至params参数中
         this.params.putAll(overrideParameterMap);
         this.path = path;
+
     }
-
-
-    //重载一个构造方法
-//    public DecryptRequestWrapper(HttpServletRequest request , Map<String , Object> extendParams) {
-//        this(request);
-//        addAllParameters(extendObject);//这里将扩展参数写入参数表
-//    }
 
 
 
     @Override
     public String getParameter(String name) {//重写getParameter，代表参数从当前类中的map获取
-        String[]values = params.get(name);
-        if(values == null || values.length == 0) {
+        String[] values = params.get(name);
+        if (values == null || values.length == 0) {
             return null;
         }
         return values[0];
@@ -53,10 +47,12 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
         return new Enumeration() {
 
             int count = 0;
+
             @Override
             public boolean hasMoreElements() {
                 return count < params.size();
             }
+
             @Override
             public String nextElement() {
                 synchronized (params) {
@@ -72,56 +68,28 @@ public class DecryptRequestWrapper extends HttpServletRequestWrapper {
 
     }
 
-
     @Override
     public String getRequestURI() {
-
-//        System.out.println(this.path);
-
-        return this.path;
+        return path;
     }
+
 
     @Override
     public String getServletPath() {
-
-//        System.out.println(super.getServletPath());
-        return "/"+this.path;
+        return path;
     }
 
     @Override
-    public String[] getParameterValues(String name) {//同上
-
-
-        System.out.println("调用"+name);
+    public String[] getParameterValues(String name) {
         return params.get(name);
     }
 
 
     @Override
     public Map<String, String[]> getParameterMap() {
-
-        System.out.println(params);
         return params;
     }
 
-//    public void addAllParameters(Map<String , Object>otherParams) {//增加多个参数
-//        for(Map.Entry<String , Object>entry : otherParams.entrySet()) {
-//            addParameter(entry.getKey() , entry.getValue());
-//        }
-//    }
-
-
-//    public void addParameter(String name , Object value) {//增加参数
-//        if(value != null) {
-//            if(value instanceof String[]) {
-//                params.put(name , (String[])value);
-//            }else if(value instanceof String) {
-//                params.put(name , new String[] {(String)value});
-//            }else {
-//                params.put(name , new String[] {String.valueOf(value)});
-//            }
-//        }
-//    }
 
 
 

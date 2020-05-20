@@ -31,9 +31,6 @@ public class HomeController {
     @ResponseBody
     public Map hello(UserParam param) {
 
-        System.out.println(param);
-        System.out.println("进行home good方法！");
-
         log.info("functionName ：{}，parameterNames：{}", "good", param.toString());
 
 //        List<User> users = userMapper.selectList(null);

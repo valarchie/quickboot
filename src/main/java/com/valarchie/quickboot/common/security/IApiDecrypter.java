@@ -1,18 +1,19 @@
 package com.valarchie.quickboot.common.security;
 
 /**
- * @description: 项目中的接口解密类
- * @Author: valarchie
- * @Date: 2020-04-19 11:27
- */
+* Created by
+* @author: valarchie
+* on: 2020/4/21
+* @email: 343928303@qq.com
+*/
 public interface IApiDecrypter {
 
     /**
-     * 解密加密串
-     * @param encryptStr 加密后的字符串
-     * @return
+     * 解密
+     * @param parameter 加密参数
+     * @return 解密后的参数
      */
-    String decrypt(String encryptStr);
+    String decryptParameter(String parameter);
 
 
 }
