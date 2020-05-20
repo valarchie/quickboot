@@ -61,7 +61,7 @@ public class ApplicationConfig {
     }
 
 
-    @Bean
+//    @Bean
     public FilterRegistrationBean exceptionFilterRegistration() {
 
         FilterRegistrationBean registration = new FilterRegistrationBean();

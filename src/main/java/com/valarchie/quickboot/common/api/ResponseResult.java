@@ -1,5 +1,7 @@
 package com.valarchie.quickboot.common.api;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiParam;
 import lombok.Data;
 
 import java.util.HashMap;
@@ -13,21 +15,25 @@ import java.util.Map;
  * @email: 343928303@qq.com
  */
 @Data
+@ApiModel
 public class ResponseResult {
 
     /**
      * 返回的错误码
      */
+    @ApiParam(name = "错误码")
     private Integer errorCode;
 
     /**
      * 返回的数据
      */
+    @ApiParam(name = "数据")
     private Map<String, Object> data;
 
     /**
      * 返回的信息
      */
+    @ApiParam(name = "返回消息")
     private String message;
 
 
