@@ -39,11 +39,11 @@
 #### 配置层
 
 - [ ] 配置log插件，logback配置，并做好优化
-- [ ] 配置文件参数加密
+- [x] 配置文件参数加密
 - [ ] swagger+yapi
 - [x] 定时任务处理
 - [ ] 配置优化tomcat
-- [ ] 优雅配置yml，配置映射pojo
+- [x] 优雅配置yml，配置映射pojo
 
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines
