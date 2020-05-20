@@ -1,48 +1,86 @@
 package com.valarchie.quickboot.controller;
 
-
+import com.valarchie.quickboot.common.api.ResponseResult;
 import com.valarchie.quickboot.dao.UserMapper;
-import com.valarchie.quickboot.entity.User;
+import com.valarchie.quickboot.service.AsynService;
+import com.valarchie.quickboot.service.CaffeineService;
+import com.valarchie.quickboot.service.HelloService;
+import com.valarchie.quickboot.service.ServiceUtil;
+import com.valarchie.quickboot.view.vo.HelloParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by
- * author:valarchie
+ * @author: valarchie
  * on 2020/2/26 9:53
  * mailbox:343928303@qq.com
  **/
 @Controller
+@RequestMapping("/hello")
 public class HelloController {
 
     @Autowired
-    private UserMapper userMapper;
+    private HelloService helloService;
+    @Autowired
+    private AsynService asynService;
+    @Autowired
+    private CaffeineService caffeineService;
 
-    @RequestMapping("/hello")
+    @RequestMapping("/world")
     @ResponseBody
-    public Map hello() {
+    public ResponseResult hello(HelloParam param) {
 
-//        List<User> users = userMapper.selectList(null);
 
-//        System.out.println(users);
+        String msg = "hello, " + param.getName();
+        // 测试异步
+        asynService.asynMethod("lily");
+        helloService.hello();
+        // 测试使用全局Service访问点
+        ServiceUtil.helloService().hello();
 
-        Map responseMap = new HashMap();
+        return ResponseResult.success().data("msg", msg);
 
-        System.out.println("进入hello方法！");
+    }
 
-//        responseMap.put("user", users);
+    @RequestMapping("/putUser")
+    @ResponseBody
+    public ResponseResult putUser(String name, String key) {
 
-//        IUserAccountService userAccountService = new UserAccountServiceImpl();
-//
-//        int count = userAccountService.count(new QueryWrapper<UserAccount>().select());
+        caffeineService.putUser(key, name);
 
-        return responseMap;
+        return ResponseResult.success();
+
+    }
+
+
+    @RequestMapping("/getUser")
+    @ResponseBody
+    public ResponseResult getUser(String key) {
+
+        String user = caffeineService.getUser(key);
+
+        System.out.println(user);
+
+        return ResponseResult.success().data("user", user);
+
+    }
+
+
+    @RequestMapping("/cleanUser")
+    @ResponseBody
+    public ResponseResult cleanUser(String key) {
+
+        caffeineService.cleanUser(key);
+
+        return ResponseResult.success();
 
     }
 

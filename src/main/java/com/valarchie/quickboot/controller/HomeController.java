@@ -1,6 +1,8 @@
 package com.valarchie.quickboot.controller;
 
 
+import com.valarchie.quickboot.common.api.ResponseResult;
+import com.valarchie.quickboot.common.api.ResultCodeEnum;
 import com.valarchie.quickboot.dao.UserMapper;
 import com.valarchie.quickboot.view.vo.UserParam;
 import lombok.extern.java.Log;
@@ -9,10 +11,9 @@ import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class HomeController {
 
     @RequestMapping("/good")
     @ResponseBody
-    public Map hello(UserParam param) {
+    public ResponseResult hello(@Valid UserParam param) {
 
         log.info("functionName ：{}，parameterNames：{}", "good", param.toString());
 
@@ -39,7 +40,7 @@ public class HomeController {
 
         Map responseMap = new HashMap();
 
-        responseMap.put("msg", "欢迎回来！");
+        responseMap.put("msg", "welcome to home 哈哈哈");
 
 //        responseMap.put("user", users);
 
@@ -47,8 +48,35 @@ public class HomeController {
 //
 //        int count = userAccountService.count(new QueryWrapper<UserAccount>().select());
 
-        return responseMap;
+        return ResponseResult.success().data("msg","hahahah");
 
     }
+
+    @RequestMapping("/apierror")
+    @ResponseBody
+    public ResponseResult apierror(@Valid UserParam param) {
+
+        log.info("functionName ：{}，parameterNames：{}", "good", param.toString());
+
+        if (1 == 1) {
+            throw new RuntimeException("报错了！");
+
+        }
+
+
+        return ResponseResult.error(ResultCodeEnum.API_ERROR);
+
+    }
+
+    @RequestMapping("/apierror2")
+    @ResponseBody
+    public ResponseResult apierror2(@Valid UserParam param) {
+
+        log.info("functionName ：{}，parameterNames：{}", "good", param.toString());
+
+        return ResponseResult.success().data("ss","ss").data("ss1","sssss");
+
+    }
+
 
 }

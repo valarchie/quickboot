@@ -17,7 +17,7 @@ import lombok.Data;
  * @email: 343928303@qq.com
  */
 @Data
-public class ApiParameter {
+public class SimpleDecryptRequest {
 
     public final static String MODULE_KEY = "module";
     public final static String FUNCTION_KEY = "function";
@@ -29,7 +29,7 @@ public class ApiParameter {
 
     private Map<String, String[]> parameters;
 
-    public ApiParameter(String module, String function, String paramJsonStr, IApiDecrypter decrypter) {
+    public SimpleDecryptRequest(String module, String function, String paramJsonStr, IApiDecrypter decrypter) {
 
         if (StrUtil.isBlank(module) || StrUtil.isBlank(function)) {
             throw new RuntimeException("module or function params not exist!");
@@ -52,7 +52,7 @@ public class ApiParameter {
                 for (Map.Entry entry : entries) {
 
                     if (entry.getKey() != null && entry.getValue() != null) {
-                        this.parameters.put(entry.getKey().toString(), new String[]{entry.toString()});
+                        this.parameters.put(entry.getKey().toString(), new String[]{entry.getValue().toString()});
                     }
 
                 }
@@ -69,9 +69,9 @@ public class ApiParameter {
      *
      * @param map
      */
-    public ApiParameter(Map<String, String> map) {
+    public SimpleDecryptRequest(Map<String, String> map) {
 
-        this(map.get(ApiParameter.MODULE_KEY), map.get(ApiParameter.FUNCTION_KEY), map.get(ApiParameter.PARAMETERS_KEY), parameter -> parameter);
+        this(map.get(SimpleDecryptRequest.MODULE_KEY), map.get(SimpleDecryptRequest.FUNCTION_KEY), map.get(SimpleDecryptRequest.PARAMETERS_KEY), parameter -> parameter);
 
     }
 
