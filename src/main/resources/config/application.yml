@@ -9,4 +9,40 @@ spring:
     url: jdbc:mysql://192.168.2.128:3306/springboot?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: valarchieroot
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+
+
+  cache:
+    cache-names: user
+    type: caffeine
+    caffeine:
+      spec: initialCapacity=1000,maximumSize=10000,expireAfterWrite=5s
+
+# 上传文件配置
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 30MB
+      max-request-size: 100MB
+
+# 文件上传路径
+file:
+  upload-folder: upload/
+
+# 加密属性
+project:
+  security:
+    password: ENC(O2iZ3t7a36c5qASsBvXh+JzOZjl0pTCR)
+
+# 配置加密的密码
+# -Djasypt.encryptor.password=valarchie
+# jasypt:
+#   encryptor:
+#     password: valarchie
+
+
+
 
