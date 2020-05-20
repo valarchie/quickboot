@@ -1,11 +1,7 @@
 # quickboot
 基于springboot、ddd的快速开发框架
 
-
 #### 待完成事项
-
-
-
 
 - [x] 集成Mybatis Plus
 - [ ] 集成Mybatis Plus Generator快速开发框架，并做好相关配置
@@ -13,8 +9,25 @@
 - [ ] 定义加解密策略
 - [ ] Mybatis模板方法
 - [ ] 配置log插件，并做好优化
-- [ ] 统一结果、统一异常、统一日志
+- [ ] 统一结果、统一异常处理、统一日志
 - [ ] 上传文件的优化，OSS
+- [ ] 统一参数校验,加自定义字段提示 
+- [ ] 配置文件参数加密
+- [x] 返回结果加密
+- [ ] 配置全局跨域
+- [ ] 跨域问题
+- [ ] 多数据源配置
+- [ ] session问题
+- [ ] swagger+yapi
+- [ ] ServiceUtil全局访问点
+- [ ] 配置异步调用Service
+- [ ] 定时任务处理
+- [ ] 配置优化tomcat
+- [ ] log规划,logback配置，优化
+- [ ] mongo,redis配置优化
+- [ ] 多数据源，主从配置，优雅配置yml，配置映射pojo
+- [ ] 邮件、OSS、支付
+- [ ] 授权,jwt，Oauth 2.0
  
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines

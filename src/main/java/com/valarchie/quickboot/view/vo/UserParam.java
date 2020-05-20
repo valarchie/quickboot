@@ -1,5 +1,6 @@
 package com.valarchie.quickboot.view.vo;
 
+import javax.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.ToString;
 
