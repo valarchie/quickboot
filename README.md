@@ -38,11 +38,11 @@
 
 #### 配置层
 
-- [ ] 配置log插件，logback配置，并做好优化
+- [x] 配置log插件，logback配置，并做好优化
 - [x] 配置文件参数加密
-- [ ] swagger+yapi
+- [x] swagger+yapi
 - [x] 定时任务处理
-- [ ] 配置优化tomcat
+- [x] 配置优化tomcat
 - [x] 优雅配置yml，配置映射pojo
 
 #### 添加Alibaba代码规约插件
