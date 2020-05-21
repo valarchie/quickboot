@@ -1,5 +1,7 @@
 package com.valarchie.quickboot.view.vo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiParam;
 import lombok.Data;
 import lombok.ToString;
@@ -18,22 +20,24 @@ import javax.validation.constraints.NotNull;
  **/
 @Data
 @ToString
+@ApiModel
 public class UserParam {
 
     @NotNull
     @NotBlank
     @NotEmpty
-    @ApiParam(name = "姓名")
+    @ApiModelProperty(value = "姓名")
     private String name;
 
     @NotNull
     @Max(120)
+    @ApiModelProperty(value = "年龄")
     private Short age;
 
     @NotNull
     @NotBlank
     @Length(min = 3)
-    @ApiParam(name = "用户地址")
+    @ApiModelProperty(value = "用户地址")
     private String address;
 
 

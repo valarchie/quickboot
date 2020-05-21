@@ -51,6 +51,19 @@
             <version>1.2.68</version>
         </dependency>
 
+        <!-- json绑定包 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.8.1</version>
+        </dependency>
+
+        <!-- 日志依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
         <!--  hutool工具包 -->
        <dependency>
             <groupId>cn.hutool</groupId>
