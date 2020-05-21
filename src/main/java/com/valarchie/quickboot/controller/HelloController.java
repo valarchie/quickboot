@@ -42,7 +42,7 @@ public class HelloController {
     @ApiOperation(value = "发送信息", notes = "向用户发送问好信息", response = UserListVO.class)
     @PostMapping(value = "/world")
     @ResponseBody
-    public ResponseResult hello(@Valid HelloParam param) {
+    public ResponseResult hello(@RequestBody @Valid HelloParam param) {
 
         String msg = "hello, " + param.getName();
         // 测试异步

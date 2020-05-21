@@ -51,12 +51,6 @@
             <version>1.2.68</version>
         </dependency>
 
-        <!-- json绑定包 -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.10.2</version>
-        </dependency>
 
         <!-- 日志依赖 -->
         <dependency>
