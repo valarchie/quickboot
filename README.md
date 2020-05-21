@@ -38,7 +38,7 @@
 
 #### 配置层
 
-- [ ] 配置log插件，logback配置，并做好优化
+- [x] 配置log插件，logback配置，并做好优化
 - [x] 配置文件参数加密
 - [x] swagger+yapi
 - [x] 定时任务处理
