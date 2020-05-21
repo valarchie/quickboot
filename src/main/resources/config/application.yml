@@ -2,6 +2,11 @@ server:
   port: 8080
   tomcat:
     uri-encoding: UTF-8
+    max-threads: 2000
+    max-http-post-size: 30MB
+    max-connections: 20000
+    accept-count: 1000
+    min-spare-threads: 50
 
 spring:
   datasource:
@@ -47,6 +52,18 @@ project:
 # jasypt:
 #   encryptor:
 #     password: valarchie
+
+
+# 日志配置
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    root: debug
+
+
+
+
+
 
 
 

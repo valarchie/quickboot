@@ -48,7 +48,7 @@ public class ControllerLogAspect {
         boolean isFile = false;
 
         for (Object arg : joinPoint.getArgs()) {
-            if (arg instanceof MultipartFile) {
+            if (arg instanceof MultipartFile || arg instanceof MultipartFile[]) {
                 isFile = true;
             }
         }

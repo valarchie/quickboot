@@ -2,6 +2,7 @@ package com.valarchie.quickboot.common.exception;
 
 import com.valarchie.quickboot.common.api.ResponseResult;
 import com.valarchie.quickboot.common.api.ResultCodeEnum;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiParam;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -43,9 +44,9 @@ public class ControllerExceptionHandler {
         if (fields.length > 0) {
 
             for (Field field : fields) {
-                ApiParam fieldAnnotation = field.getAnnotation(ApiParam.class);
+                ApiModelProperty fieldAnnotation = field.getAnnotation(ApiModelProperty.class);
                 if (fieldAnnotation != null) {
-                    fieldNameMaps.put(field.getName(), fieldAnnotation.name());
+                    fieldNameMaps.put(field.getName(), fieldAnnotation.value());
                 }
             }
 
