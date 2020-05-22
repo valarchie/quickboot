@@ -1,20 +1,11 @@
-package com.valarchie.quickboot.controller;
+package com.valarchie.quickboot.infrastructure.controller;
 
 import cn.hutool.core.codec.Base64;
-import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.io.FileUtil;
 import com.valarchie.quickboot.common.api.ResponseResult;
 import com.valarchie.quickboot.common.api.ResultCodeEnum;
-import com.valarchie.quickboot.service.AsynService;
-import com.valarchie.quickboot.service.CaffeineService;
-import com.valarchie.quickboot.service.HelloService;
-import com.valarchie.quickboot.service.ServiceUtil;
-import com.valarchie.quickboot.view.vo.HelloParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Base64Utils;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,9 +15,6 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * description: 上传控制器

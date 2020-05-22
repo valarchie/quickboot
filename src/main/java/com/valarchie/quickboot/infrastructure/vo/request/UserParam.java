@@ -1,8 +1,7 @@
-package com.valarchie.quickboot.view.vo;
+package com.valarchie.quickboot.infrastructure.vo.request;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiParam;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;

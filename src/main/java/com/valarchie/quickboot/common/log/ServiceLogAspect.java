@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ServiceLogAspect {
 
-    @Pointcut("execution(public * com.valarchie.quickboot.service.*.*(..))")
+    @Pointcut("execution(public * com.valarchie.quickboot.infrastructure.service.*.*(..))")
     public void serviceLog(){}
 
     @Before("serviceLog()")

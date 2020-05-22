@@ -174,7 +174,7 @@
 
     <!--开发环境:打印控制台-->
     <springProfile name="dev">
-        <logger name="com.valarchie.quickboot.dao" level="debug"/>
+        <logger name="com.valarchie.quickboot.infrastructure.dao" level="debug"/>
     </springProfile>
 
     <root level="info">

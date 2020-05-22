@@ -1,4 +1,4 @@
-package com.valarchie.quickboot.service;
+package com.valarchie.quickboot.infrastructure.service;
 
 /**
 * description: 异步Service

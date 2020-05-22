@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  **/
 @SpringBootApplication
 @ServletComponentScan
-@MapperScan("com.valarchie.quickboot.dao")
+@MapperScan("com.valarchie.quickboot.infrastructure.mapper")
 @ComponentScan("com.valarchie")
 @EnableAsync
 @EnableCaching

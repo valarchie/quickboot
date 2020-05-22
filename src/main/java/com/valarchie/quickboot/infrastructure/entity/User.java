@@ -1,8 +1,7 @@
-package com.valarchie.quickboot.entity;
+package com.valarchie.quickboot.infrastructure.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiParam;
 import lombok.Data;
 
 /**

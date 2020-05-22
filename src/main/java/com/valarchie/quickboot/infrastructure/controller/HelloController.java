@@ -1,23 +1,17 @@
-package com.valarchie.quickboot.controller;
+package com.valarchie.quickboot.infrastructure.controller;
 
 import com.valarchie.quickboot.common.api.ResponseResult;
-import com.valarchie.quickboot.dao.UserMapper;
-import com.valarchie.quickboot.entity.User;
-import com.valarchie.quickboot.service.AsynService;
-import com.valarchie.quickboot.service.CaffeineService;
-import com.valarchie.quickboot.service.HelloService;
-import com.valarchie.quickboot.service.ServiceUtil;
-import com.valarchie.quickboot.view.vo.HelloParam;
-import com.valarchie.quickboot.view.vo.response.UserListVO;
+import com.valarchie.quickboot.infrastructure.service.AsynService;
+import com.valarchie.quickboot.infrastructure.service.CaffeineService;
+import com.valarchie.quickboot.infrastructure.service.HelloService;
+import com.valarchie.quickboot.infrastructure.vo.request.HelloParam;
+import com.valarchie.quickboot.infrastructure.vo.response.UserListVO;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Swagger模板 以及缓存测试模板
@@ -42,7 +36,7 @@ public class HelloController {
     @ApiOperation(value = "发送信息", notes = "向用户发送问好信息", response = UserListVO.class)
     @PostMapping(value = "/world")
     @ResponseBody
-    public ResponseResult hello(@RequestBody @Valid HelloParam param) {
+    public ResponseResult hello(@Valid HelloParam param) {
 
         String msg = "hello, " + param.getName();
         // 测试异步

@@ -1,7 +1,7 @@
 package com.valarchie.quickboot;
 
-import com.valarchie.quickboot.dao.UserMapper;
-import com.valarchie.quickboot.entity.User;
+import com.valarchie.quickboot.infrastructure.mapper.UserMapper;
+import com.valarchie.quickboot.infrastructure.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

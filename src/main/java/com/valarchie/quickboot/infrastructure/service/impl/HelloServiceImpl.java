@@ -1,6 +1,6 @@
-package com.valarchie.quickboot.service.impl;
+package com.valarchie.quickboot.infrastructure.service.impl;
 
-import com.valarchie.quickboot.service.HelloService;
+import com.valarchie.quickboot.infrastructure.service.HelloService;
 
 /**
 * description:

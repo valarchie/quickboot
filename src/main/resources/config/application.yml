@@ -9,11 +9,15 @@ server:
     min-spare-threads: 50
 
 spring:
+
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.2.128:3306/springboot?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://192.168.3.128:3306/springboot?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: valarchieroot
+
+
   mvc:
     throw-exception-if-no-handler-found: true
   resources:
@@ -60,6 +64,13 @@ logging:
   level:
     root: debug
 
+mybatis-plus:
+  mapper-locations: classpath:com/valarchie/quickboot/infrastructure/mapper/xml/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  如果文件在resource目录下的话
+#  mapper-locations: classpath:/mapper/*.xml
+#  type-aliases-package: com.wang.mapper.mysql
 
 
 

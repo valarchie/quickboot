@@ -1,7 +1,7 @@
-package com.valarchie.quickboot.dao;
+package com.valarchie.quickboot.infrastructure.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.valarchie.quickboot.entity.User;
+import com.valarchie.quickboot.infrastructure.entity.User;
 import org.springframework.stereotype.Component;
 
 /**

@@ -1,12 +1,7 @@
-package com.valarchie.quickboot.controller;
+package com.valarchie.quickboot.infrastructure.controller;
 
 import com.valarchie.quickboot.common.api.ResponseResult;
 import com.valarchie.quickboot.common.config.SecurityConfig;
-import com.valarchie.quickboot.dao.UserMapper;
-import com.valarchie.quickboot.view.vo.UserParam;
-import java.util.HashMap;
-import java.util.Map;
-import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

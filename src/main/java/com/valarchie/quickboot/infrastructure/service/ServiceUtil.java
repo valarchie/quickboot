@@ -1,7 +1,5 @@
-package com.valarchie.quickboot.service;
+package com.valarchie.quickboot.infrastructure.service;
 
-import com.valarchie.quickboot.service.impl.HelloServiceImpl;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

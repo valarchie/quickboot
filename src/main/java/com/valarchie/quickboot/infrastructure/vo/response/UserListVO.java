@@ -1,6 +1,6 @@
-package com.valarchie.quickboot.view.vo.response;
+package com.valarchie.quickboot.infrastructure.vo.response;
 
-import com.valarchie.quickboot.entity.User;
+import com.valarchie.quickboot.infrastructure.entity.User;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

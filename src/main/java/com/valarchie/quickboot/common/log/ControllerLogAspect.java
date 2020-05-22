@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class ControllerLogAspect {
 
-    @Pointcut("execution(public * com.valarchie.quickboot.controller.*.*(..))")
+    @Pointcut("execution(public * com.valarchie.quickboot.infrastructure.controller.*.*(..))")
     public void webLog() {
     }
 

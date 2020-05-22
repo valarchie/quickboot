@@ -1,6 +1,6 @@
-package com.valarchie.quickboot.service.impl;
+package com.valarchie.quickboot.infrastructure.service.impl;
 
-import com.valarchie.quickboot.service.CaffeineService;
+import com.valarchie.quickboot.infrastructure.service.CaffeineService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

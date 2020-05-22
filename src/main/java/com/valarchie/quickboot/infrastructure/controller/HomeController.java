@@ -1,13 +1,10 @@
-package com.valarchie.quickboot.controller;
+package com.valarchie.quickboot.infrastructure.controller;
 
 
 import com.valarchie.quickboot.common.api.ResponseResult;
 import com.valarchie.quickboot.common.api.ResultCodeEnum;
-import com.valarchie.quickboot.dao.UserMapper;
-import com.valarchie.quickboot.view.vo.UserParam;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
-import lombok.extern.log4j.Log4j2;
+import com.valarchie.quickboot.infrastructure.mapper.UserMapper;
+import com.valarchie.quickboot.infrastructure.vo.request.UserParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

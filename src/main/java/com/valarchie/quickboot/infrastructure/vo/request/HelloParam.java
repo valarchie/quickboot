@@ -1,4 +1,4 @@
-package com.valarchie.quickboot.view.vo;
+package com.valarchie.quickboot.infrastructure.vo.request;
 
 
 import io.swagger.annotations.ApiModel;

@@ -98,7 +98,7 @@ public class ResponseResult {
     }
 
 
-    public ResponseResult data(String key, String value) {
+    public ResponseResult data(String key, Object value) {
 
         data.put(key, value);
 

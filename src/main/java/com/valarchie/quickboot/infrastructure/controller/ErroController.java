@@ -1,4 +1,4 @@
-package com.valarchie.quickboot.controller;
+package com.valarchie.quickboot.infrastructure.controller;
 
 import com.valarchie.quickboot.common.api.ResponseResult;
 import com.valarchie.quickboot.common.api.ResultCodeEnum;

@@ -1,9 +1,4 @@
-package com.valarchie.quickboot.service;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
+package com.valarchie.quickboot.infrastructure.service;
 
 /**
 * description: 本地缓存示例

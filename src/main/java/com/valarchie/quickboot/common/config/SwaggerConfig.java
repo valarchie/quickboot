@@ -28,7 +28,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 // 为当前包路径 也可以填RequestHandlerSelectors.any() 全包
-                .apis(RequestHandlerSelectors.basePackage("com.valarchie.quickboot.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.valarchie.quickboot.infrastructure.controller"))
                 // 扫描全路径
                 .paths(PathSelectors.any())
                 .build();

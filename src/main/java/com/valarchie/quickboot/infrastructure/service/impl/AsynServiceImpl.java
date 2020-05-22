@@ -1,7 +1,7 @@
-package com.valarchie.quickboot.service.impl;
+package com.valarchie.quickboot.infrastructure.service.impl;
 
 
-import com.valarchie.quickboot.service.AsynService;
+import com.valarchie.quickboot.infrastructure.service.AsynService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 
