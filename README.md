@@ -29,10 +29,11 @@
 #### 数据层
 
 - [x] 集成Mybatis Plus
-- [ ] Mybatis Plus模板方法
+- [x] Mybatis Plus模板方法
 - [ ] 多数据源配置，主从配置
-- [ ] 连接池配置
-- [ ] mongo，redis配置优化
+- [ ] druid连接池配置
+- [ ] redis集成
+- [ ] mongo集成
 
 
 
