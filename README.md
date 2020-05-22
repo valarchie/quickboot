@@ -1,5 +1,5 @@
 ## quickboot
-搭建基于springboot、ddd的快速开发框架
+搭建基于springboot的快速开发框架
 
 ### 待完成事项
 
@@ -31,7 +31,7 @@
 - [x] 集成Mybatis Plus
 - [x] Mybatis Plus模板方法
 - [ ] 多数据源配置，主从配置
-- [ ] druid连接池配置
+- [x] druid连接池配置
 - [ ] redis集成
 - [ ] mongo集成
 
