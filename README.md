@@ -1,7 +1,7 @@
 ## quickboot
 搭建基于springboot的快速开发框架
 
-### 待完成事项
+### 完成事项
 
 #### Web层
 
@@ -45,6 +45,7 @@
 - [x] 定时任务处理
 - [x] 配置优化tomcat
 - [x] 优雅配置yml，配置映射pojo
+
 
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines
