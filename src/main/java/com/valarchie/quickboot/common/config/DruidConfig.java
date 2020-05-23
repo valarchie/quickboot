@@ -11,7 +11,12 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-
+/**
+* description: druid连接池配置
+* @author: valarchie
+* on: 2020/5/22
+* @email: 343928303@qq.com
+*/
 @Configuration
 public class DruidConfig {
 

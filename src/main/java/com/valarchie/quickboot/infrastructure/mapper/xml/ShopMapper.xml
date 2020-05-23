@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.valarchie.quickboot.infrastructure.mapper.ShopMapper">
+
+    <!-- 通用查询映射结果 -->
+   <!-- <resultMap id="BaseResultMap" type="com.valarchie.quickboot.infrastructure.entity.db.ShopUser">
+        <id column="id" property="id" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+        <result column="openid" property="openid" />
+    </resultMap>-->
+
+    <!--以下是新增的方法-->
+    <select id="getShopUserList" resultType="com.valarchie.quickboot.infrastructure.entity.db.ShopUser">
+        select u.`name` as username, u.id as user_id, s.shop as shop_name from shop s INNER JOIN `user` u ON s.id = u.id
+    </select>
+
+
+
+</mapper>
