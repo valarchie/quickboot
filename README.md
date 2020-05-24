@@ -1,7 +1,7 @@
 ## quickboot
-搭建基于springboot、ddd的快速开发框架
+搭建基于springboot的快速开发框架
 
-### 待完成事项
+### 完成事项
 
 #### Web层
 
@@ -12,7 +12,7 @@
 - [x] 统一参数校验以及自定义字段名称错误提示 
 - [x] 统一结果、统一异常处理、统一日志
 - [ ] 分布式session+redis
-- [ ] 上传文件的优化
+- [x] 上传文件的优化
   
 
 #### 业务层
@@ -31,8 +31,8 @@
 - [x] 集成Mybatis Plus
 - [x] Mybatis Plus模板方法
 - [ ] 多数据源配置，主从配置
-- [ ] druid连接池配置
-- [ ] redis集成
+- [x] druid连接池配置
+- [x] redis集成
 - [ ] mongo集成
 
 
@@ -45,6 +45,7 @@
 - [x] 定时任务处理
 - [x] 配置优化tomcat
 - [x] 优雅配置yml，配置映射pojo
+
 
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines
