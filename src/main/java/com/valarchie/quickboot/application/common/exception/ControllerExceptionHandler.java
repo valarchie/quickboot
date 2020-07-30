@@ -23,14 +23,11 @@ import java.util.*;
 public class ControllerExceptionHandler {
 
 
-
-
-
-
     @ResponseBody
     @ExceptionHandler(BindException.class)
     public ResponseResult parameterException(BindException e) {
 
+        e.printStackTrace();
 
         // 声明字段名称翻译Map
         Map<String, String> fieldNameMaps = new HashMap<>();
@@ -40,14 +37,12 @@ public class ControllerExceptionHandler {
         Field[] fields = targetClass.getDeclaredFields();
         // 获取字段中注解名称，放入map中
         if (fields.length > 0) {
-
             for (Field field : fields) {
                 ApiModelProperty fieldAnnotation = field.getAnnotation(ApiModelProperty.class);
                 if (fieldAnnotation != null) {
                     fieldNameMaps.put(field.getName(), fieldAnnotation.value());
                 }
             }
-
         }
 
         // 抽取参数绑定错误
@@ -56,32 +51,23 @@ public class ControllerExceptionHandler {
         List<String> simpleErrors = new ArrayList<>();
         // 字段去重Set
         Set<String> errorSet = new HashSet<>();
-
         for (FieldError fieldError : fieldErrors) {
-
             String field = fieldError.getField();
-
             if (errorSet.contains(field)) {
                 continue;
             }
-
             // 放入Set进行去重
             errorSet.add(field);
-
             // 进行翻译字段名称
             if (fieldNameMaps.get(field) != null) {
                 field = fieldNameMaps.get(field);
             }
-
             String defaultMessage = fieldError.getDefaultMessage();
-
             String simpleError = field + defaultMessage;
 
             simpleErrors.add(simpleError);
         }
-
         return ResponseResult.error(ResultCodeEnum.API_ERROR, simpleErrors.toString());
-
     }
 
 

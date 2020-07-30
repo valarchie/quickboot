@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Scheduled;
 
-/**
+/*
 *
 *     cron = "0 10 0 * * ? " ，表示：12点10分执行
 *     第一位，表示秒，取值0-59 *
@@ -25,7 +25,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 *
 *
 */
-
 /**
 * description: 定时任务
 * @author: valarchie

@@ -1,11 +1,15 @@
 package com.valarchie.quickboot.security;
 
 
+import com.valarchie.quickboot.application.ApplicationStarter;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -16,15 +20,15 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @email: 343928303@qq.com
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = ApplicationStarter.class)
 public class JasyptTest {
 
     @Autowired
-    StringEncryptor stringEncryptor;
+    private StringEncryptor stringEncryptor;
 
     @Test
     public void encrypt() {
-        System.out.println("PWD: " + stringEncryptor.encrypt("123456789"));
+        System.out.println("PWD: " + stringEncryptor.encrypt("tgplyzryhiqdbgjf"));
     }
 
 }

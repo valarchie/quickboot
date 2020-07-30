@@ -14,6 +14,7 @@ spring:
     username: root
     password: valarchieroot
     driver-class-name: com.mysql.cj.jdbc.Driver
+
 # 采用alibaba druid连接池 http://localhost:8080/druid/sql.html 访问druid
     type: com.alibaba.druid.pool.DruidDataSource
 # 下面为连接池的补充设置，应用到上面所有数据源中
@@ -83,20 +84,50 @@ spring:
       max-file-size: 30MB
       max-request-size: 100MB
 
+# 邮件配置服务
+  mail:
+    # 邮件服务地址
+    host: smtp.qq.com
+    # 端口
+    port: 587
+    # 编码格式
+    default-encoding: utf-8
+    # 用户名
+    username: ENC(PFmeY0aEgtJfO198PR3cw+ljwg3FhtlPr8qvNtfW9YI=)
+    # 授权码
+    password: ENC(XWBEiDty5bxjhMX4VQJmBXfB6aJOj2ypqb38th0G8KM=)
+    # 其它参数
+    properties:
+      mail:
+        smtp:
+          # 如果是用 SSL 方式，需要配置如下属性
+          starttls:
+            enable: true
+            required: true
+
+
 # 文件上传路径
 file:
   upload-folder: upload/
 
-# 加密属性
+# 加密属性 加密方法在test包中的  jasypt加密bean进行
 project:
   security:
-    password: ENC(O2iZ3t7a36c5qASsBvXh+JzOZjl0pTCR)
+#    password: ENC(O2iZ3t7a36c5qASsBvXh+JzOZjl0pTCR)
+
+#    encrypt-response: true
+
+#  打开注释就会注册加密的filter
+#    simple-filter: true
+#    complex-filter: true
+
+
 
 # 配置加密的密码
 # -Djasypt.encryptor.password=valarchie
-# jasypt:
-#   encryptor:
-#     password: valarchie
+#jasypt:
+# encryptor:
+#   password: valarchie
 
 
 # 日志配置
