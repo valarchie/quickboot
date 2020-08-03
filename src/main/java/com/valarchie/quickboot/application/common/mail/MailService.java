@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
@@ -24,105 +25,130 @@ import java.util.Map;
 public class MailService {
 
     @Autowired
-    private JavaMailSender mailSender;
-
-    private static final String SENDER = "343928303@qq.com";
+    private JavaMailSenderImpl mailSender;
 
     /**
-     * 发送普通邮件
-     *
-     * @param to      收件人
+     * 发送简单邮件
+     * @param receiver 收件人
      * @param subject 主题
      * @param content 内容
      */
-    public void sendSimpleMailMessge(String to, String subject, String content) {
+    public void sendSimpleMessage(String receiver, String subject, String content) {
+
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(SENDER);
-        message.setTo(to);
+
+        message.setFrom(mailSender.getUsername());
+        message.setTo(receiver);
         message.setSubject(subject);
         message.setText(content);
+
         try {
             mailSender.send(message);
         } catch (Exception e) {
-            log.error("发送简单邮件时发生异常!", e);
+            log.error("fail to send simple message", e);
         }
     }
 
     /**
-     * 发送 HTML 邮件
-     *
-     * @param to      收件人
+     * 发送HTML邮件
+     * @param receiver 收件人
      * @param subject 主题
      * @param content 内容
      */
-    public void sendMimeMessge(String to, String subject, String content) {
-        MimeMessage message = mailSender.createMimeMessage();
+    public void sendHtmlMessage(String receiver, String subject, String content) {
+
         try {
-            //true表示需要创建一个multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(SENDER);
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(content, true);
-            mailSender.send(message);
-        } catch (MessagingException e) {
-            log.error("发送MimeMessge时发生异常！", e);
+
+            MimeMessageHelper mimeMessageHelper = getMimeMessageHelper(receiver, subject, content);
+            mailSender.send(mimeMessageHelper.getMimeMessage());
+
+        } catch (Exception e) {
+            log.error("fail to send MIME message！", e);
         }
+
     }
 
     /**
      * 发送带附件的邮件
      *
-     * @param to       收件人
+     * @param receiver 收件人
      * @param subject  主题
      * @param content  内容
      * @param filePath 附件路径
      */
-    public void sendMimeMessge(String to, String subject, String content, String filePath) {
-        MimeMessage message = mailSender.createMimeMessage();
+    public void sendMimeMessageWithAttachment(String receiver, String subject, String content, String filePath) {
+
         try {
             //true表示需要创建一个multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(SENDER);
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(content, true);
+            MimeMessageHelper mimeMessageHelper = getMimeMessageHelper(receiver, subject, content);
 
             FileSystemResource file = new FileSystemResource(new File(filePath));
             String fileName = file.getFilename();
-            helper.addAttachment(fileName, file);
 
-            mailSender.send(message);
-        } catch (MessagingException e) {
-            log.error("发送带附件的MimeMessge时发生异常！", e);
+            mimeMessageHelper.addAttachment(fileName, file);
+            mailSender.send(mimeMessageHelper.getMimeMessage());
+
+        } catch (Exception e) {
+            log.error("fail to send MIME message！", e);
         }
     }
 
     /**
      * 发送带静态文件的邮件
      *
-     * @param to       收件人
+     * @param receiver 收件人
      * @param subject  主题
      * @param content  内容
-     * @param rscIdMap 需要替换的静态文件
+     * @param resourceMap 需要替换的静态文件
      */
-    public void sendMimeMessge(String to, String subject, String content, Map<String, String> rscIdMap) {
-        MimeMessage message = mailSender.createMimeMessage();
-        try {
-            //true表示需要创建一个multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(SENDER);
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(content, true);
+    public void sendMimeMessageWithRichMedia(String receiver, String subject, String content, Map<String, String> resourceMap) {
 
-            for (Map.Entry<String, String> entry : rscIdMap.entrySet()) {
+        try {
+
+            MimeMessageHelper mimeMessageHelper = getMimeMessageHelper(receiver, subject, content);
+
+            for (Map.Entry<String, String> entry : resourceMap.entrySet()) {
                 FileSystemResource file = new FileSystemResource(new File(entry.getValue()));
-                helper.addInline(entry.getKey(), file);
+                mimeMessageHelper.addInline(entry.getKey(), file);
             }
-            mailSender.send(message);
-        } catch (MessagingException e) {
-            log.error("发送带静态文件的MimeMessge时发生异常！", e);
+
+            mailSender.send(mimeMessageHelper.getMimeMessage());
+
+        } catch (Exception e) {
+            log.error("fail to send MIME message！", e);
         }
     }
+
+
+    /**
+     * 生成富文本信息工具类
+     * @param receiver 收件人
+     * @param subject 主题
+     * @param content 内容
+     * @return 返回 富文本信息工具类
+     */
+    private MimeMessageHelper getMimeMessageHelper(String receiver, String subject, String content) {
+
+        MimeMessage message = mailSender.createMimeMessage();
+
+        MimeMessageHelper helper = null;
+
+        try {
+
+            helper = new MimeMessageHelper(message, true);
+            //true表示需要创建一个multipart message
+            helper.setFrom(mailSender.getUsername());
+            helper.setTo(receiver);
+            helper.setSubject(subject);
+            helper.setText(content, true);
+        } catch (Exception e) {
+            log.error("fail to create MIME message, receiver is {}, subject is {}, content is {}", receiver, subject,
+                    content);
+        }
+
+        return helper;
+
+    }
+
+
 }
