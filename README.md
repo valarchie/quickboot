@@ -20,7 +20,9 @@
 
 - [x] ServiceUtil全局访问点
 - [x] 配置异步调用Service
-- [ ] 邮件、OSS、支付
+- [x] 邮件，多种邮件格式集成
+- [ ] OSS
+- [ ] 支付
 - [ ] 授权，jwt，Oauth 2.0
 - [x] ThreadLocal工具类
 - [x] Caffeine缓存
@@ -45,7 +47,7 @@
 - [x] 定时任务处理
 - [x] 配置优化tomcat
 - [x] 优雅配置yml，配置映射pojo
-
+- [x] 参数化开关加解密策略
 
 #### 添加Alibaba代码规约插件
 Setting -> plugins -> alibaba Java Code Guidelines
