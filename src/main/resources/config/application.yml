@@ -146,6 +146,18 @@ mybatis-plus:
 
 
 
+# 微信相关配置
+wechat:
+  open:
+    componentAppId: ""
+    componentSecret: ""
+    componentToken: ""
+    componentAesKey: ""
+  redis:
+    host: "127.0.0.1"
+
+
+
 
 
 
