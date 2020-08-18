@@ -1,9 +1,15 @@
 package com.valarchie.quickboot.interfaces.controller;
 
+import com.github.binarywang.wxpay.bean.notify.WxPayOrderNotifyResult;
+import com.github.binarywang.wxpay.bean.request.WxPayUnifiedOrderRequest;
+import com.github.binarywang.wxpay.bean.result.WxPayUnifiedOrderResult;
+import com.github.binarywang.wxpay.exception.WxPayException;
+import com.github.binarywang.wxpay.service.WxPayService;
 import com.google.common.eventbus.EventBus;
 import com.valarchie.quickboot.application.common.api.ResponseResult;
 import com.valarchie.quickboot.application.common.event.EBMessage;
 import me.chanjar.weixin.common.error.WxErrorException;
+import me.chanjar.weixin.common.service.WxService;
 import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
 import me.chanjar.weixin.open.api.WxOpenService;
 import me.chanjar.weixin.open.bean.auth.WxOpenAuthorizationInfo;
@@ -28,6 +34,9 @@ public class WechatController {
     @Autowired
     private WxOpenService wxOpenService;
 
+    @Autowired
+    private WxPayService wxPayService;
+
     @RequestMapping("/login")
     @ResponseBody
     public ResponseResult login(String code) throws WxErrorException {
@@ -48,18 +57,31 @@ public class WechatController {
 
     @RequestMapping("/pay")
     @ResponseBody
-    public ResponseResult pay(String code) throws WxErrorException {
+    public ResponseResult pay(String orderId) throws WxErrorException, WxPayException {
 
-        WxMpOAuth2AccessToken s = wxOpenService.getWxOpenComponentService().oauth2getAccessToken("s", "");
+        // 模拟数据库下单操作
+        // TODO 下单
+        WxPayUnifiedOrderRequest orderRequest = new WxPayUnifiedOrderRequest();
 
-        WxOpenAuthorizerInfoResult authorizerInfoResult =
-                wxOpenService.getWxOpenComponentService().getAuthorizerInfo(s.getAccessToken());
+        WxPayUnifiedOrderResult wxPayUnifiedOrderResult = wxPayService.unifiedOrder(orderRequest);
 
-        WxOpenAuthorizerInfo authorizerInfo1 = authorizerInfoResult.getAuthorizerInfo();
-        WxOpenAuthorizationInfo authorizationInfo = authorizerInfoResult.getAuthorizationInfo();
+        // TODO 返回给前端预支付id
+        String prepayId = wxPayUnifiedOrderResult.getPrepayId();
+
+        return ResponseResult.success().data("msg", "下单ok！");
+
+    }
 
 
-        return ResponseResult.success().data("msg", "登陆成功！");
+    @RequestMapping("/payCallBack")
+    @ResponseBody
+    public ResponseResult payCallBack(String xmlData) throws WxErrorException, WxPayException {
+
+        final WxPayOrderNotifyResult notifyResult = this.wxPayService.parseOrderNotifyResult(xmlData);
+
+        // TODO 根据支付返回结果 去写订单结果
+
+        return ResponseResult.success().data("msg", "支付ok！");
 
     }
 

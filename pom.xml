@@ -175,6 +175,12 @@
             <artifactId>weixin-java-open</artifactId>
             <version>3.8.0</version>
         </dependency>
+        <!-- 配置微信支付相关-->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-pay</artifactId>
+            <version>3.8.0</version>
+        </dependency>
 
 
     </dependencies>
