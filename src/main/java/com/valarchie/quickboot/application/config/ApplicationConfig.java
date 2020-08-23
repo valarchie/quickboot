@@ -1,6 +1,5 @@
 package com.valarchie.quickboot.application.config;
 
-import com.ulisesbocchio.jasyptspringboot.encryptor.DefaultLazyEncryptor;
 import com.valarchie.quickboot.application.common.exception.ExceptionFilter;
 import com.valarchie.quickboot.application.common.filter.ApiDecryptFilter;
 import com.valarchie.quickboot.application.common.filter.SimpleDecryptFilter;
@@ -14,11 +13,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 
 /**
 * description: 本项目的配置

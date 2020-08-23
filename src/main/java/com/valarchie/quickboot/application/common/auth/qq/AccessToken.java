@@ -1,13 +1,14 @@
-package com.valarchie.quickboot.application.common.auth;
+package com.valarchie.quickboot.application.common.auth.qq;
 
-import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
+import lombok.Data;
 
 import java.io.Serializable;
 
-public class AccessToken  implements Serializable {
+@Data
+class AccessToken  implements Serializable {
 
     private static final long serialVersionUID = 6986530164134648944L;
     private String accessToken;
@@ -15,7 +16,8 @@ public class AccessToken  implements Serializable {
     private String refreshToken;
     private String uid;
 
-    AccessToken(String res,String typeid) throws Exception,JSONException{
+
+   /* AccessToken(String res,String typeid) throws Exception,JSONException{
         super();
         JSONObject json = JSON.parseObject(res);
         accessToken = json.getString("access_token");
@@ -27,7 +29,7 @@ public class AccessToken  implements Serializable {
             refreshToken = null;
             uid = null;
         }
-    }
+    }*/
 
 
 

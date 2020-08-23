@@ -5,11 +5,8 @@ import com.github.binarywang.wxpay.bean.request.WxPayUnifiedOrderRequest;
 import com.github.binarywang.wxpay.bean.result.WxPayUnifiedOrderResult;
 import com.github.binarywang.wxpay.exception.WxPayException;
 import com.github.binarywang.wxpay.service.WxPayService;
-import com.google.common.eventbus.EventBus;
 import com.valarchie.quickboot.application.common.api.ResponseResult;
-import com.valarchie.quickboot.application.common.event.EBMessage;
 import me.chanjar.weixin.common.error.WxErrorException;
-import me.chanjar.weixin.common.service.WxService;
 import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
 import me.chanjar.weixin.open.api.WxOpenService;
 import me.chanjar.weixin.open.bean.auth.WxOpenAuthorizationInfo;
@@ -21,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * description:
- *
+ * description: 微信相关操作
  * @author: valarchie
  * on: 2020/8/10
  * @email: 343928303@qq.com
@@ -31,7 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/wechat")
 public class WechatController {
 
-    @Autowired
+ /*   @Autowired
     private WxOpenService wxOpenService;
 
     @Autowired
@@ -57,7 +53,7 @@ public class WechatController {
 
     @RequestMapping("/pay")
     @ResponseBody
-    public ResponseResult pay(String orderId) throws WxErrorException, WxPayException {
+    public ResponseResult pay(String orderId) throws WxPayException {
 
         // 模拟数据库下单操作
         // TODO 下单
@@ -84,5 +80,5 @@ public class WechatController {
         return ResponseResult.success().data("msg", "支付ok！");
 
     }
-
+*/
 }

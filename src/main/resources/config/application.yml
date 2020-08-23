@@ -153,8 +153,14 @@ wechat:
     componentSecret: ""
     componentToken: ""
     componentAesKey: ""
-  redis:
-    host: "127.0.0.1"
+#  redis:
+#    host: "127.0.0.1"
+
+
+qq:
+  open:
+    appKey: ENC(7iJR9l0soytZQAW9Al4Br5j7GDgAKV8ASSiQaMq8+7w6fcc344bQUD1rs3qJJHv0)
+    appId: ENC(afqfqualiM2P8LPwx1lATkicrLNhnJit)
 
 
 
