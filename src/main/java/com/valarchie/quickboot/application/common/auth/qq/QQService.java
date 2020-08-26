@@ -95,6 +95,8 @@ public class QQService {
 
         Map<String, Object> paramsMap = new HashMap<>(8);
 
+        System.out.println(appId);
+
         paramsMap.put("openid", openid);
         paramsMap.put("oauth_consumer_key", appId);
         paramsMap.put("access_token", accessToken);
@@ -105,7 +107,7 @@ public class QQService {
         UserInfo userInfo = JSONUtil.toBean(responseJson, UserInfo.class);
 
         if (StrUtil.isNotBlank(userInfo.getMsg())) {
-            throw new RuntimeException("获取用户信息失败！");
+            throw new RuntimeException("获取用户信息失败！"+ userInfo.getMsg());
         }
 
         return userInfo;
