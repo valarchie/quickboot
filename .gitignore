@@ -5,7 +5,9 @@
 # IntelliJ project files
 .idea
 *.iml
-\target
+/target
+/src/main/resources/config/application-prod.yml
 out
 gen
 log_dir_IS_UNDEFINED
+
