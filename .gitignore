@@ -6,7 +6,7 @@
 .idea
 *.iml
 /target
-/src/main/resources/config/application-prod.yml
+/demo/src/main/resources/config/application-prod.yml
 /tingtingzhuan/
 out
 gen
