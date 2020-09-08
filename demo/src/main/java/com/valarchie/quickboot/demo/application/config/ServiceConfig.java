@@ -1,5 +1,7 @@
-package com.valarchie.quickboot.demo.application;
+package com.valarchie.quickboot.demo.application.config;
 
+import com.github.binarywang.wxpay.service.WxPayService;
+import com.github.binarywang.wxpay.service.impl.WxPayServiceImpl;
 import com.valarchie.quickboot.demo.infrastructure.service.AsynService;
 import com.valarchie.quickboot.demo.infrastructure.service.CaffeineService;
 import com.valarchie.quickboot.demo.infrastructure.service.HelloService;
@@ -28,4 +30,10 @@ public class ServiceConfig {
     public CaffeineService caffeineService() {
         return new CaffeineServiceImpl();
     }
+
+    @Bean
+    public WxPayService wxPayService(){
+        return new WxPayServiceImpl();
+    }
+
 }

@@ -2,7 +2,7 @@ package com.valarchie.quickboot.demo.interfaces.controller;
 
 
 import com.valarchie.quickboot.core.common.api.ResponseResult;
-import com.valarchie.quickboot.core.common.redis.RedisUtil;
+import com.valarchie.quickboot.core.common.cache.redis.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

@@ -1,5 +1,5 @@
 spring:
   profiles:
-    active: dev
+    active: prod
 
 ## 启动的VM参数 需加上 -Djasypt.encryptor.password=xxxxxx
